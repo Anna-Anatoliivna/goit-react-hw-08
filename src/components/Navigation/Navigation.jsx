@@ -36,7 +36,7 @@ export const Navigation = () => {
                     isActive ? styles.active : styles.link
                   }
                 >
-                  LoginPage
+                  Login
                 </NavLink>
               </li>
               <li>
@@ -46,7 +46,7 @@ export const Navigation = () => {
                     isActive ? styles.active : styles.link
                   }
                 >
-                  RegistrationPage
+                  Registration
                 </NavLink>
               </li>
             </ul>
