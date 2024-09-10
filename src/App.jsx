@@ -9,6 +9,7 @@ import Loader from './components/Loader/Loader';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import { refreshUser } from './redux/auth/operations';
 import { selectAuthIsRefreshing } from './redux/auth/selectors';
+import RestrictedRoute from './pages/RestrictedRoute';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
 const ContactsPage = lazy(() => import('./pages/ContactsPage'));
@@ -26,7 +27,7 @@ const App = () => {
     dispatch(refreshUser());
   }, [dispatch]);
 
-if(isRefreshing) return <p>User is refreshing, please wait.</p>;
+  if (isRefreshing) return <p>User is refreshing, please wait.</p>;
 
   return (
     <div>
@@ -37,8 +38,24 @@ if(isRefreshing) return <p>User is refreshing, please wait.</p>;
         <Suspense fallback={<Loader />}>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/register" element={<RegistrationPage />} />
-            <Route path="/login" element={<LoginPage />} />
+            <Route
+              path="/register"
+              element={
+                <RestrictedRoute
+                  component={<RegistrationPage />}
+                  redirectTo="/contacts"
+                />
+              }
+            />
+            <Route
+              path="/login"
+              element={
+                <RestrictedRoute
+                  component={<LoginPage />}
+                  redirectTo="/contacts"
+                />
+              }
+            />
             <Route path="/contacts" element={<ContactsPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
