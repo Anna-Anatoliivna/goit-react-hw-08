@@ -1,9 +1,13 @@
+import AppBar from "../AppBar/AppBar";
+import { Container } from "../Container/Container";
 
 
 const Layout = () => {
   return (
-    <div>Layout</div>
-  )
+    <Container>
+      <AppBar />
+    </Container>
+  );
 }
 
 export default Layout
