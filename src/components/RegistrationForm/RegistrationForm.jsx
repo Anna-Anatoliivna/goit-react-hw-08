@@ -2,9 +2,9 @@ import { Field, Form, Formik } from 'formik';
 import styles from './RegistrationForm.module.css';
 import * as Yup from 'yup';
 import { ErrorMessage } from 'formik';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { register } from '../../redux/auth/operations';
-
+import { selectAuthError } from '../../redux/auth/selectors';
 
 const RegisterSchema = Yup.object().shape({
   name: Yup.string()
@@ -22,15 +22,15 @@ const RegisterSchema = Yup.object().shape({
 
 const RegistrationForm = () => {
   const dispatch = useDispatch();
+  const error = useSelector(selectAuthError); 
   const initialValues = {
     name: '',
     email: '',
     password: '',
   };
-  
 
   const handleSubmit = (values, actions) => {
-dispatch(register(values));
+    dispatch(register(values));
     // console.log(values);
     actions.resetForm();
   };
@@ -70,6 +70,9 @@ dispatch(register(values));
         <button className={styles.btn} type="submit">
           Sign Up
         </button>
+        {error && (
+          <p className={styles.err}>Ooops, some error occured...{error}</p>
+        )}
       </Form>
     </Formik>
   );

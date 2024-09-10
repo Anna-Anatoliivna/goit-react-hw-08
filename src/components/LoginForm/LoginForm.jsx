@@ -2,8 +2,9 @@ import { Field, Form, Formik } from 'formik';
 import styles from './LoginForm.module.css';
 import * as Yup from 'yup';
 import { ErrorMessage } from 'formik';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../../redux/auth/operations';
+import { selectAuthError } from '../../redux/auth/selectors';
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string()
@@ -17,6 +18,7 @@ const LoginSchema = Yup.object().shape({
 
 const LoginForm = () => {
   const dispatch = useDispatch();
+  const error = useSelector(selectAuthError);
   const initialValues = {
     email: '',
     password: '',
@@ -56,6 +58,9 @@ const LoginForm = () => {
         <button className={styles.btn} type="submit">
           Log in
         </button>
+        {error && (
+          <p className={styles.err}>Ooops, some error occured...{error}</p>
+        )}
       </Form>
     </Formik>
   );
