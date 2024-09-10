@@ -10,6 +10,7 @@ import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import { refreshUser } from './redux/auth/operations';
 import { selectAuthIsRefreshing } from './redux/auth/selectors';
 import RestrictedRoute from './pages/RestrictedRoute';
+import PrivateRoute from './pages/PrivateRoute';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
 const ContactsPage = lazy(() => import('./pages/ContactsPage'));
@@ -56,7 +57,15 @@ const App = () => {
                 />
               }
             />
-            <Route path="/contacts" element={<ContactsPage />} />
+            <Route
+              path="/contacts"
+              element={
+                <PrivateRoute
+                  component={<ContactsPage />}
+                  redirectTo="/login"
+                />
+              }
+            />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>
