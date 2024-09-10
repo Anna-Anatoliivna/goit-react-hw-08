@@ -1,18 +1,23 @@
-// import Loader from '../components/Loader/Loader';
-// import { ErrorMessage } from '../components/ErrorMessage/ErrorMessage';
+
 import { Container } from '../components/Container/Container';
-import { ContactList } from '../components/ContactList/ContactList';
-import ContactForm from '../components/ContactForm/ContactForm';
-import { SearchBox } from '../components/SearchBox/SearchBox';
+
 
 
 const HomePage = () => {
   return (
     <Container>
-      <h1>Phonebook</h1>
-      <ContactForm />
-      <SearchBox />
-      <ContactList />
+      <h1>Phonebook App for you!</h1>
+      <img
+        src="/img/phonebook.png"
+        alt="Phonebook app"
+        width="1087"
+        height="873"
+      />
+      <p>
+        Phonebook is an application for storing phone contacts in convenient
+        text form. Access to the information is protected by authorization. The
+        application is lightweight and easy to use.
+      </p>
     </Container>
   );
 };
