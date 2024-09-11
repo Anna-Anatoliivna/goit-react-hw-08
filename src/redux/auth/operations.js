@@ -14,7 +14,7 @@ export const login = createAsyncThunk(
     try {
       const { data } = await instance.post('users/login', formData);
       setAuthHeaders(data.token);
-      console.log(data);
+      // console.log(data);
 
       return data;
     } catch (error) {

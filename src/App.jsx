@@ -1,6 +1,5 @@
 import './App.css';
 import { lazy, Suspense, useEffect } from 'react';
-import { fetchContacts } from './redux/contacts/operations';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigation } from './components/Navigation/Navigation';
 import { Route, Routes } from 'react-router-dom';
@@ -11,7 +10,7 @@ import { refreshUser } from './redux/auth/operations';
 import { selectAuthIsRefreshing } from './redux/auth/selectors';
 import RestrictedRoute from './pages/RestrictedRoute';
 import PrivateRoute from './pages/PrivateRoute';
-import toast from 'react-hot-toast';
+
 
 const HomePage = lazy(() => import('./pages/HomePage'));
 const ContactsPage = lazy(() => import('./pages/ContactsPage'));
@@ -22,12 +21,7 @@ const App = () => {
   const isRefreshing = useSelector(selectAuthIsRefreshing);
 
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchContacts()).unwrap().then(() => {
-      toast.success('Contacts loaded succsessfully');
-    });
-  }, [dispatch]);
-  useEffect(() => {
+    useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
 

@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import ContactForm from '../components/ContactForm/ContactForm';
 import { ContactList } from '../components/ContactList/ContactList';
 import { Container } from '../components/Container/Container';
@@ -9,9 +9,20 @@ import {
   selectContactsIsLoading,
 } from '../redux/contacts/selectors';
 import Loader from '../components/Loader/Loader';
+import { fetchContacts } from '../redux/contacts/operations';
+import { useEffect } from 'react';
+import toast from 'react-hot-toast';
 
 const ContactsPage = () => {
-  // const contacts = useSelector(selectContacts);
+  const dispatch = useDispatch();
+   useEffect(() => {
+     dispatch(fetchContacts())
+       .unwrap()
+       .then(() => {
+         toast.success('Contacts loaded succsessfully');
+       });
+   }, [dispatch]);
+  
   const isLoading = useSelector(selectContactsIsLoading);
   const error = useSelector(selectContactsError);
   
