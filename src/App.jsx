@@ -11,6 +11,7 @@ import { refreshUser } from './redux/auth/operations';
 import { selectAuthIsRefreshing } from './redux/auth/selectors';
 import RestrictedRoute from './pages/RestrictedRoute';
 import PrivateRoute from './pages/PrivateRoute';
+import toast from 'react-hot-toast';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
 const ContactsPage = lazy(() => import('./pages/ContactsPage'));
@@ -22,7 +23,9 @@ const App = () => {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(fetchContacts()).unwrap().then(() => {
+      toast.success('Contacts loaded succsessfully');
+    });
   }, [dispatch]);
   useEffect(() => {
     dispatch(refreshUser());
