@@ -1,19 +1,15 @@
-// import { useDispatch } from "react-redux";
-// import { logout } from "../../redux/auth/operations";
+import { Suspense } from "react";
 import AppBar from "../AppBar/AppBar";
 import { Container } from "../Container/Container";
 
 
-const Layout = () => {
-  // const dispatch = useDispatch();
-  // const onLogout = () => {
-  //   dispatch(logout());
-  // };
+const Layout = ({ children }) => {
   return (
     <Container>
       <AppBar />
+      <Suspense fallback={null}>{children}</Suspense>
     </Container>
   );
-}
+};
 
 export default Layout
