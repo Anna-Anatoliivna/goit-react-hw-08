@@ -4,10 +4,9 @@ import styles from './AuthNav.module.css';
 const AuthNav = () => {
   return (
     <>
-      {/* <div className={styles.wrapper}> */}
-      {/* <nav>
+      <nav>
         <ul className={styles.nav}>
-          <li> */}
+          <li>
             <NavLink
               to="/login"
               className={({ isActive }) =>
@@ -16,8 +15,8 @@ const AuthNav = () => {
             >
               Login
             </NavLink>
-          {/* </li>
-          <li> */}
+          </li>
+          <li>
             <NavLink
               to="/register"
               className={({ isActive }) =>
@@ -26,10 +25,9 @@ const AuthNav = () => {
             >
               Registration
             </NavLink>
-          {/* </li>
-        </ul> */}
-      {/* </nav> */}
-      {/* </div> */}
+          </li>
+        </ul>
+      </nav>
     </>
   );
 };

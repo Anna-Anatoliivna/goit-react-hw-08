@@ -10,3 +10,8 @@
   font-size: 20px;
   border: 2px solid #6d6d6d;
 }
+.listItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

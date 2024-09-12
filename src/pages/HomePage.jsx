@@ -8,7 +8,7 @@ const HomePage = () => {
     <Container>
       <h1>Phonebook App for you!</h1>
       <img
-        src="/img/phonebook.png"
+        src="/img/book.jpg"
         alt="Phonebook app"
         width="1087"
         height="873"

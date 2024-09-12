@@ -12,12 +12,16 @@
   list-style: none;
   gap: 15px;
   padding-inline-start: 0px;
+  width: 100%;
 }
 .item {
   display: flex;
   list-style: none;
-  gap: 140px;
+   align-items: center;
+  justify-content: space-between;
   border: 2px solid #000;
   padding: 10px;
+  padding-right: 50px;
+  padding-left: 50px;
   color: #000;
 }
